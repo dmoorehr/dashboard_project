@@ -1,0 +1,4 @@
+# Python Dependencies: requirements.txt
+bokeh
+flask
+pandas
