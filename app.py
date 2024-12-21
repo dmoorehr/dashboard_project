@@ -1,11 +1,9 @@
-# Main Flask App: app.py
-from flask import Flask, render_template, request, send_file
+from flask import Flask, render_template, request
 import os
 from dashboard import generate_dashboard
 
 app = Flask(__name__)
 
-# Configure upload folder
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config["UPLOAD_FOLDER"] = UPLOAD_FOLDER
@@ -25,9 +23,8 @@ def upload_file():
     file_path = os.path.join(app.config["UPLOAD_FOLDER"], file.filename)
     file.save(file_path)
 
-    # Generate dashboard
-    dashboard_path = generate_dashboard(file_path)
-    return send_file(dashboard_path, as_attachment=True)
+    script, div = generate_dashboard(file_path)
+    return render_template("dashboard.html", script=script, div=div)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=80)
+    app.run(host="0.0.0.0", port=8080)
