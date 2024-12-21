@@ -1,14 +1,14 @@
-# HTML Template: templates/index.html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Dashboard File Upload</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
 </head>
 <body>
-    <h1>Upload Your File</h1>
-    <form action="/upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" required>
-        <button type="submit">Generate Dashboard</button>
-    </form>
+    <h1>Your Dashboard</h1>
+    {{ script|safe }}
+    {{ div|safe }}
 </body>
 </html>
