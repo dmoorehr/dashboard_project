@@ -2,3 +2,4 @@
 bokeh
 flask
 pandas
+openpyxl
